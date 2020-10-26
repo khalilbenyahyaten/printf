@@ -3,21 +3,21 @@
 #include <stdarg.h>
 /**
  * _printf - produces output according to a format.
- * @format : const char 
+ * @format : const char
  */
 int _printf(const char *format, ...)
 {
-char *input, *str; 
+char *input, *str;
 int i;
 int j = 0;
 va_list valist;
 va_start(valist, format);
 for (i = 0; format[i]; i++)
 {
-if (format[i] == "%")	   
-{ 
+if (format[i] == "%")
+{
 str = format[i + 1];
-input = va_arg(valist, format); 
+input = va_arg(valist, format);
 switch (str)
 {
 case 'c':
