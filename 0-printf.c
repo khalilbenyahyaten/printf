@@ -5,10 +5,10 @@
 /**
  * _printf - produces output according to a format.
  * @format : const char
- */ 
+ */
 int _printf(const char *format, ...)
 {
-char *string , ch, ch1;
+char *string, ch, ch1;
 int i, l = 0, n;
 va_list valist;
 if (!format || (format[0] == '%' && format[1] == '\0'))
@@ -25,7 +25,7 @@ l++;
 else
 {
 i++;
-ch =format[i];
+ch = format[i];
 if (ch == '%')
 {
 _putchar(ch);
@@ -47,7 +47,7 @@ i++;
 else if (ch == 'c')
 {
 l++;
-ch1 = va_arg(valist, int);  
+ch1 = va_arg(valist, int);
 _putchar(ch1);
 i++;
 }
