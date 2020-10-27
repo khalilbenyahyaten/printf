@@ -8,60 +8,55 @@
  */ 
 int _printf(const char *format, ...)
 {
-char *str = "", *string = "", *ch = "", *final;
-int i, j, k, l = 0, n, m;
+  char *str, *string , ch, ch1;
+  int j, i, l = 0, n;
 va_list valist;
+if (!format || (format[0] == '%' && format[1] == '\0'))
+return (-1);
 va_start(valist, format);
- i = 0;
- l = 0;
-for (i = 0; format[i]; i++)
+str = "";
+for (i = 0; format[i] != '\0'; )
 {
-if (format[i] != '%')
-{
-str[l] = format[i];
-l++;
-}
-else
-{
-k = i;
-for (j = 0; j <= 1; j++)
-{
-ch[j] = format[k];
-k++;
-}
-switch (ch[1])
-{
-case '%':
-{
-str[l] = '%';
-l++;
-i = i + 2;
-break;
-}
-case 's':
-{
-string = va_arg(valist, char *);
-for ( n = 0; string[n]; n++)
-{
-str[l] = string[n];
-}
-l = l + n - 1;
-break;
-}
-case 'c':
-{
-str[l] = va_arg(valist, int);
-l++;
-break;
-}
-}
-}
-}
-final = malloc(sizeof(char) * l);
-for (m = 0; m <= l; m++)
-final[m] = str[m];
-puts(final);
-free (final);
+  if (format[i] != '%')
+    {
+    str[l] = format[i];
+    l++;
+    i++;
+    }
+  else
+    {
+      i++;
+     ch =format[i];
+      if (ch == '%')
+	  {
+	    str[l] = ch;
+	    l++;
+	  }
+      else if (ch == 's')
+	  {
+	    i++;
+	    string = va_arg(valist, char *);
+	    if (string == NULL)
+	      string = "(null)";
+	    for (n = 0; string[n] != '\0'; n++)
+	      {
+		str[l] = string[n];
+		l++;
+	      }
+	  }
+      else if (ch == 'c')
+	{
+	  ch1 = va_arg(valist, int);  
+	    str[l] = ch1;
+	  l++;
+	  i++;
+	}
+    }
+ }
+ for (j = 0; str[j] != '\0'; j++)
+   {
+     _putchar(str[j]);
+   }
 va_end(valist);
 return (l);
 }
