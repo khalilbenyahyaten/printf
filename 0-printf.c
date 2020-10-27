@@ -8,55 +8,50 @@
  */ 
 int _printf(const char *format, ...)
 {
-  char *str, *string , ch, ch1;
-  int j, i, l = 0, n;
+char *string , ch, ch1;
+int i, l = 0, n;
 va_list valist;
 if (!format || (format[0] == '%' && format[1] == '\0'))
 return (-1);
 va_start(valist, format);
-str = "";
 for (i = 0; format[i] != '\0'; )
 {
-  if (format[i] != '%')
-    {
-    str[l] = format[i];
-    l++;
-    i++;
-    }
-  else
-    {
-      i++;
-     ch =format[i];
-      if (ch == '%')
-	  {
-	    str[l] = ch;
-	    l++;
-	  }
-      else if (ch == 's')
-	  {
-	    i++;
-	    string = va_arg(valist, char *);
-	    if (string == NULL)
-	      string = "(null)";
-	    for (n = 0; string[n] != '\0'; n++)
-	      {
-		str[l] = string[n];
-		l++;
-	      }
-	  }
-      else if (ch == 'c')
-	{
-	  ch1 = va_arg(valist, int);  
-	    str[l] = ch1;
-	  l++;
-	  i++;
-	}
-    }
- }
- for (j = 0; str[j] != '\0'; j++)
-   {
-     _putchar(str[j]);
-   }
-va_end(valist);
+if (format[i] != '%')
+{
+_putchar(format[i]);
+i++;
+l++;
+}
+else
+{
+i++;
+ch =format[i];
+if (ch == '%')
+{
+_putchar(ch);
+i++;
+l++;
+}
+else if (ch == 's')
+{
+string = va_arg(valist, char *);
+if (string == NULL)
+string = "(null)";
+for (n = 0; string[n] != '\0'; n++)
+{
+l++;
+_putchar(string[n]);
+}
+i++;
+}
+else if (ch == 'c')
+{
+l++;
+ch1 = va_arg(valist, int);  
+_putchar(ch1);
+i++;
+}
+}
+}
 return (l);
 }
