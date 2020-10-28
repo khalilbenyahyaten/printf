@@ -22,8 +22,15 @@ _putchar(format[i]);
 i++;
 l++;
 }
-else
+else 
 {
+if (format[i + 1] != '%' && format[i + 1] != 's' && format[i + 1] != 'c')
+{
+_putchar('%');
+i++;
+}
+else
+{ 
 i++;
 ch = format[i];
 if (ch == '%')
@@ -50,6 +57,7 @@ l++;
 ch1 = va_arg(valist, int);
 _putchar(ch1);
 i++;
+}
 }
 }
 }
