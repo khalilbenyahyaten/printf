@@ -16,7 +16,7 @@ return (-1);
 va_start(valist, format);
 for (i = 0; format[i] != '\0'; )
 {
-if (format[i + 1] != '%' && format[i + 1] != '%' && format[i] != '%')
+if (format[i + 1] != '%')
 {
 _putchar(format[i]);
 i++;
