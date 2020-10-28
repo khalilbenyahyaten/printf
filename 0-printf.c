@@ -16,13 +16,13 @@ return (-1);
 va_start(valist, format);
 for (i = 0; format[i] != '\0'; )
 {
-if (format[i] != '%')
+if (format[i + 1] != '%' && format[i + 1] != '%' && format[i] != '%')
 {
 _putchar(format[i]);
 i++;
 l++;
 }
-else 
+else
 {
 if (format[i + 1] != '%' && format[i + 1] != 's' && format[i + 1] != 'c')
 {
@@ -30,7 +30,7 @@ _putchar('%');
 i++;
 }
 else
-{ 
+{
 i++;
 ch = format[i];
 if (ch == '%')
