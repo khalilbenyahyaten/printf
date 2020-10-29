@@ -38,7 +38,7 @@ if (ch == 's')
 {
 string = va_arg(valist, char *);
 if (string == NULL)
-string = "(NULL)";
+string = "(null)";
 for (n = 0; string[n] != '\0'; n++)
 {
 l++;
