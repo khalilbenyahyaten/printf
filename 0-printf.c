@@ -28,18 +28,13 @@ if (format[i + 1] != '%' && format[i + 1] != 's' && format[i + 1] != 'c')
 {
 _putchar('%');
 i++;
+l++;
 }
 else
 {
 i++;
 ch = format[i];
-if (ch == '%')
-{
-_putchar(ch);
-i++;
-l++;
-}
-else if (ch == 's')
+if (ch == 's')
 {
 string = va_arg(valist, char *);
 if (string == NULL)
